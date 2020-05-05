@@ -23,3 +23,7 @@ jobs:
         run: dotnet publish --configuration Release --no-restore
       - name: Build docker image
         run: docker build --tag weisong0908/coffee-shop-talk-dev .
+      - name: Login to Docker Hub with access token
+        run: docker login -u weisong0908 -p ${{ github.DOCKERHUB_ACCESSTOKEN }}
+      - name: Push docker image to Docker Hub
+        run: docker push weisong0908/coffee-shop-talk-dev
