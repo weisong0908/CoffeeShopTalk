@@ -29,6 +29,7 @@ jobs:
         run: docker push weisong0908/coffee-shop-talk-dev
   deploy:
     name: Deploy on server
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Executes remote ssh commands using ssh key
