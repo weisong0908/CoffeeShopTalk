@@ -39,12 +39,8 @@ jobs:
           username: weisong0908
           key: ${{ secrets.DIGITALOCEAN_SSHKEY }}
           port: 22
-          script: docker ps
-      - name: Stop current running container
-        run: docker stop coffee-shop-talk-dev
-      - name: Remove the old container
-        run: docker rm coffee-shop-talk-dev
-      - name: Pull docker image from Docker Hub
-        run: docker pull weisong0908/coffee-shop-talk-dev
-      - name: Run docker image
-        run: docker run -d -p 5000:80 --name coffee-shop-talk-dev weisong0908/coffee-shop-talk-dev
+          script: |
+            docker stop coffee-shop-talk-dev
+            docker rm coffee-shop-talk-dev
+            docker pull weisong0908/coffee-shop-talk-dev
+            docker run -d -p 5000:80 --name coffee-shop-talk-dev weisong0908/coffee-shop-talk-dev
