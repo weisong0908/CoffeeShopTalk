@@ -6,12 +6,12 @@ on:
       - develop
 jobs:
   build:
-    name: Build project
+    name: Build application
     runs-on: ubuntu-latest
     steps:
       - name: Checkout develop branch
         uses: actions/checkout@v2
-      - name: Setup .NET Core
+      - name: Setup .NET Core 3.1
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.101
@@ -19,3 +19,15 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --configuration Release --no-restore
+  publish:
+    name: Publish application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish
+        run: dotnet publish --configuration Release --no-restore
+  dockerise:
+    name: Dockerise application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build docker image
+        run: docker build --tag weisong0908/coffee-shop-talk-dev .
