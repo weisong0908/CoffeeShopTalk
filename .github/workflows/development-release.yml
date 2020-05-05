@@ -27,3 +27,19 @@ jobs:
         run: docker login -u weisong0908 -p ${{ secrets.DOCKERHUB_ACCESSTOKEN }}
       - name: Push docker image to Docker Hub
         run: docker push weisong0908/coffee-shop-talk-dev
+  deploy:
+    name: Deploy on server
+    runs-on: ubuntu-latest
+    steps:
+      - name: Executes remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DIGITALOCEAN_SERVERADDRESS }}
+          username: weisong0908
+          key: ${{ secrets.DIGITALOCEAN_SSHKEY }}
+          port: 22
+          script: whoami
+      - name: Pull docker image from Docker Hub
+        run: docker pull weisong0908/coffee-shop-talk-dev
+      - name: Run docker image
+        run: docker run -d -p 5000:80 --name coffee-shop-talk-dev weisong0908/coffee-shop-talk-dev
