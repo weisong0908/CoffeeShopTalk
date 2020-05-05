@@ -39,7 +39,7 @@ jobs:
           username: weisong0908
           key: ${{ secrets.DIGITALOCEAN_SSHKEY }}
           port: 22
-          script: whoami
+          script: docker ps
       - name: Stop current running container
         run: docker stop coffee-shop-talk-dev
       - name: Remove the old container
