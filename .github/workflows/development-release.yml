@@ -28,7 +28,7 @@ jobs:
       - name: Push docker image to Docker Hub
         run: docker push weisong0908/coffee-shop-talk-dev
   deploy:
-    name: Deploy on server
+    name: Deploy to server
     needs: build
     runs-on: ubuntu-latest
     steps:
