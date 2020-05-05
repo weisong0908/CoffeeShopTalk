@@ -40,6 +40,10 @@ jobs:
           key: ${{ secrets.DIGITALOCEAN_SSHKEY }}
           port: 22
           script: whoami
+      - name: Stop current running container
+        run: docker stop coffee-shop-talk-dev
+      - name: Remove the old container
+        run: docker rm coffee-shop-talk-dev
       - name: Pull docker image from Docker Hub
         run: docker pull weisong0908/coffee-shop-talk-dev
       - name: Run docker image
