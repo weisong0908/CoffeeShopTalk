@@ -3,6 +3,37 @@
 @{
     ViewData["Title"] = "Chat";
 }
+
+<form method="POST">
+
+@if(User.Identity.IsAuthenticated)
+{
+<button id="logoutButton" asp-page-handler="Logout">Logout</button>
+<table>
+    <thead>
+        <tr>
+            <th>Claim</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in User.Claims)
+        {
+            <tr>
+                <td>@claim.Type</td>
+                <td>@claim.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+else
+{
+<button type="submit" id="loginButton" asp-page-handler="Login">Login</button>
+}
+</form>
+
+<p >@Model.Click has been clicked</p>
 <h1>Let's Chat!</h1>
     <div class="container">
         <div class="row">&nbsp;</div>
