@@ -90,7 +90,7 @@ namespace CoffeeShopTalk
         {
             app.UseForwardedHeaders(new ForwardedHeadersOptions()
             {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedHost | ForwardedHeaders.XForwardedProto
             });
 
             if (env.IsDevelopment())
