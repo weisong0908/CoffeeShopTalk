@@ -85,10 +85,10 @@ namespace CoffeeShopTalk
                     });
             services.Configure<ForwardedHeadersOptions>(options =>
             {
-                options.ForwardedHeaders =
-                    ForwardedHeaders.XForwardedFor |
-                    ForwardedHeaders.XForwardedHost |
-                    ForwardedHeaders.XForwardedProto;
+                options.ForwardedHeaders = ForwardedHeaders.All;
+                // ForwardedHeaders.XForwardedFor |
+                // ForwardedHeaders.XForwardedHost |
+                // ForwardedHeaders.XForwardedProto;
 
                 options.ForwardLimit = 2;  //Limit number of proxy hops trusted
                 options.KnownNetworks.Clear();
