@@ -90,7 +90,7 @@ namespace CoffeeShopTalk
                 // ForwardedHeaders.XForwardedHost |
                 // ForwardedHeaders.XForwardedProto;
 
-                options.ForwardLimit = 2;  //Limit number of proxy hops trusted
+                options.ForwardLimit = 1;  //Limit number of proxy hops trusted
                 options.KnownNetworks.Clear();
                 options.KnownProxies.Clear();
             });
