@@ -90,7 +90,7 @@ namespace CoffeeShopTalk
                 // ForwardedHeaders.XForwardedHost |
                 // ForwardedHeaders.XForwardedProto;
 
-                options.ForwardLimit = 1;  //Limit number of proxy hops trusted
+                // options.ForwardLimit = 1;  //Limit number of proxy hops trusted
                 options.KnownNetworks.Clear();
                 options.KnownProxies.Clear();
             });
@@ -99,7 +99,7 @@ namespace CoffeeShopTalk
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // app.UseForwardedHeaders();
+            app.UseForwardedHeaders();
 
             if (env.IsDevelopment())
             {
