@@ -85,13 +85,13 @@ namespace CoffeeShopTalk
                     });
             services.Configure<ForwardedHeadersOptions>(options =>
             {
-                options.ForwardedHeaders = ForwardedHeaders.All;
-                // ForwardedHeaders.XForwardedFor |
+                options.ForwardedHeaders =// ForwardedHeaders.All;
+                ForwardedHeaders.XForwardedFor |
                 // ForwardedHeaders.XForwardedHost |
-                // ForwardedHeaders.XForwardedProto;
+                ForwardedHeaders.XForwardedProto;
 
                 options.ForwardLimit = 2;  //Limit number of proxy hops trusted
-                // options.KnownNetworks.Clear();
+                options.KnownNetworks.Clear();
                 options.KnownProxies.Clear();
             });
         }
