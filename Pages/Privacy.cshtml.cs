@@ -10,8 +10,10 @@ namespace CoffeeShopTalk.Pages
 {
     public class PrivacyModel : PageModel
     {
-        public string IpAddress { get; set; }
-        public string PortNumber { get; set; }
+        public string RemoteIpAddress { get; set; }
+        public string RemotePortNumber { get; set; }
+        public string LocalIpAddress { get; set; }
+        public string LocalPortNumber { get; set; }
         public string Scheme { get; set; }
         public string Host { get; set; }
         private readonly ILogger<PrivacyModel> _logger;
@@ -23,8 +25,10 @@ namespace CoffeeShopTalk.Pages
 
         public void OnGet()
         {
-            IpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-            PortNumber = HttpContext.Connection.RemotePort.ToString();
+            RemoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+            RemotePortNumber = HttpContext.Connection.RemotePort.ToString();
+            LocalIpAddress = HttpContext.Connection.LocalIpAddress.ToString();
+            LocalPortNumber = HttpContext.Connection.LocalPort.ToString();
             Scheme = HttpContext.Request.Scheme;
             Host = HttpContext.Request.Host.Value;
         }
